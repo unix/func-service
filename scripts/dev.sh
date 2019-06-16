@@ -7,4 +7,4 @@
   chmod +x ./dist/bin.js
 } > /dev/null
 
-echo 'linked. run <cfunc> to start.'
+echo 'linked. run <func-service> to start.'
