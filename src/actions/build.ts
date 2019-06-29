@@ -56,7 +56,7 @@ export class Build {
       const fix = print.cyanColor('npm i ncc -D')
       throw new Error(`About. missing package "ncc". \n  Run "${fix}" to fix.`)
     }
-    spiner.succeed(true)
+    spiner.succeed()
   }
   
   async compile(): Promise<void> {
