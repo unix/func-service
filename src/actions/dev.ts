@@ -3,7 +3,7 @@ import path from 'path'
 import * as print from '../utils/print'
 import * as spiner from '../utils/spinner'
 import { Command, CommandArgsProvider, SubOptions } from 'func'
-import { exec } from 'child_process'
+import { exec, execSync } from 'child_process'
 
 const cwd = process.cwd()
 
@@ -54,11 +54,10 @@ export class Dev {
     if (!this.entry) throw new Error(`About. Not found entry.`)
     
     try {
-      // tslint:disable-next-line:no-eval
-      eval('require("ts-node")')
+      execSync('ts-node -v')
     } catch (e) {
-      const fix = print.cyanColor('npm i ts-node -D')
-      throw new Error(`About. missing package "ts-node". \n  Run "${fix}" to fix.`)
+      const fix = print.cyanColor('npm i -g ts-node')
+      throw new Error(`About. Missing global package "ts-node". \n  Run "${fix}" to fix.`)
     }
     
     spiner.succeed(true)
