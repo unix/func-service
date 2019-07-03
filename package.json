@@ -1,6 +1,6 @@
 {
   "name": "func-service",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/bin.js",
   "license": "MIT",
   "preferGlobal": true,
