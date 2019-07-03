@@ -1,6 +1,6 @@
 ## func-service
 
-Standard tooling for [`func`](https://github.com/wittbulter/func) development.
+Standard tooling for [`func`](https://github.com/unix/func) development.
 
 <br/>
 
