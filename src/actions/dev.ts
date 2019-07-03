@@ -67,7 +67,7 @@ export class Dev {
   async dev(): Promise<void> {
     const dist = path.join(cwd, 'dist')
     const devBin = path.join(cwd, 'dist', 'bin.js')
-    const npm = this.getLinkCommand()
+    const linkCommand = this.getLinkCommand()
     if (!fs.existsSync(dist)) fs.mkdirSync(dist)
     if (fs.existsSync(devBin)) fs.unlinkSync(devBin)
     
@@ -75,7 +75,7 @@ export class Dev {
     fs.writeFileSync(devBin, content)
     spiner.start('linking file...')
   
-    const command = `cd ${cwd} && (${npm} unlink; ${npm} link) && chmod +x ./dist/bin.js`
+    const command = `cd ${cwd} && ${linkCommand} && chmod +x ./dist/bin.js`
     exec(command, (err) => {
       if (err) throw err
       spiner.succeed()
@@ -87,7 +87,7 @@ export class Dev {
   
   private getLinkCommand(): string {
     const yarnLock = path.join(cwd, 'yarn.lock')
-    return fs.existsSync(yarnLock) ? 'yarn' : 'npm'
+    return fs.existsSync(yarnLock) ? '(yarn unlink; yarn link)' : 'npm unlink && npm link'
   }
   
 }

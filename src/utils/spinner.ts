@@ -21,7 +21,6 @@ export const succeed = (clear: boolean = false) => {
   if (clear) {
     global.spinner.stop()
     global.spinner.clear()
-    process.stderr.write('\u001B[1A')
   } else {
     global.spinner.succeed()
   }
