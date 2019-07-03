@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { exec } from 'child_process'
+import { exec, execSync } from 'child_process'
 import * as print from '../utils/print'
 import * as spiner from '../utils/spinner'
 import { Command, SubOptions, CommandArgsProvider } from 'func'
@@ -50,18 +50,17 @@ export class Build {
     }
 
     try {
-      // tslint:disable-next-line:no-eval
-      eval('require("ncc")')
+      execSync('ncc version')
     } catch (e) {
-      const fix = print.cyanColor('npm i ncc -D')
-      throw new Error(`About. missing package "ncc". \n  Run "${fix}" to fix.`)
+      const fix = print.cyanColor('npm i @zeit/ncc -D')
+      throw new Error(`About. Missing package "ncc". \n  Run "${fix}" to fix.`)
     }
     spiner.succeed()
   }
   
   async compile(): Promise<void> {
     spiner.start('bundling...')
-    const command = `cd ${cwd} && ncc -m build ${this.entry} -o ${this.output}`
+    const command = `cd ${cwd} && ${this.getNCCPath()} -m build ${this.entry} -o ${this.output}`
     exec(command, (err, stdout) => {
       if (err) throw err
       spiner.succeed()
@@ -70,6 +69,10 @@ export class Build {
       const content = `#!/usr/bin/env node\nrequire('./index.js')`
       fs.writeFileSync(bin, content)
     })
+  }
+  
+  private getNCCPath(): string {
+    return path.join(cwd, 'node_modules', '.bin', 'ncc')
   }
   
 }
