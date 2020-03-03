@@ -2,7 +2,7 @@ import ora, { Ora } from 'ora'
 import chalk from 'chalk'
 
 type G = NodeJS.Global & {
-  spinner: Ora,
+  spinner: Ora
 }
 declare let global: G
 

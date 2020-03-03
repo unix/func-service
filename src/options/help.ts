@@ -1,5 +1,5 @@
 import { Option, RegisterProvider } from 'func'
-const pkg = require('../../package.json')
+import pkg from '../../package.json'
 
 @Option({
   name: 'help',
