@@ -19,6 +19,3 @@ export const catchErr = (err: Error): void => {
   console.log(dangerColor(`> ${msg}`))
   process.exit(1)
 }
-
-
-

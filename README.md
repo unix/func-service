@@ -6,21 +6,22 @@ Standard tooling for [`func`](https://github.com/unix/func) development.
 
 ### Usage
 
-  - Install with `npm i func-service -D`
+- Install with `npm i func-service -D`
 
-  - development: `func-service dev`
-  
-  - build cli project: `func-service build`
-  
+- development: `func-service dev`
+
+- build cli project: `func-service build`
+
 <br/>
 
 ### Params
 
-  - `func-service dev`: [-f, 'entry file']
-  
-  - `func-service build`: [-f, 'entry file'] [-o, 'output dir']
+- `func-service dev`: [-f, 'entry file']
+
+- `func-service build`: [-f, 'entry file'] [-o, 'output dir']
 
 <br/>
 
 ### LICENSE
+
 [MIT](./LICENSE)

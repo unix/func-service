@@ -11,29 +11,34 @@ const cwd = process.cwd()
   name: 'build',
   description: 'pack all files',
 })
-@SubOptions([{
-  name: 'file', alias: 'f', type: String,
-}, {
-  name: 'out', alias: 'o', type: String,
-}])
+@SubOptions([
+  {
+    name: 'file',
+    alias: 'f',
+    type: String,
+  },
+  {
+    name: 'out',
+    alias: 'o',
+    type: String,
+  },
+])
 export class Build {
   private pkgPath: string = path.join(cwd, 'package.json')
   private indexs: string[] = [
     path.join(cwd, 'src', 'index.ts'),
     path.join(cwd, 'index.ts'),
   ]
-  
+
   private entry: string
   private output: string = path.join(cwd, 'dist')
-  
-  constructor(
-    private args: CommandArgsProvider,
-  ) {
+
+  constructor(private args: CommandArgsProvider) {
     this.check()
       .then(() => this.compile())
       .catch(print.catchErr)
   }
-  
+
   async check(): Promise<void> {
     spiner.start('validating...')
     if (!fs.existsSync(this.pkgPath)) {
@@ -57,10 +62,12 @@ export class Build {
     }
     spiner.succeed()
   }
-  
+
   async compile(): Promise<void> {
     spiner.start('bundling...')
-    const command = `cd ${cwd} && ${this.getNCCPath()} -m build ${this.entry} -o ${this.output}`
+    const command = `cd ${cwd} && ${this.getNCCPath()} -m build ${this.entry} -o ${
+      this.output
+    }`
     exec(command, (err, stdout) => {
       if (err) throw err
       spiner.succeed()
@@ -70,9 +77,8 @@ export class Build {
       fs.writeFileSync(bin, content)
     })
   }
-  
+
   private getNCCPath(): string {
     return path.join(cwd, 'node_modules', '.bin', 'ncc')
   }
-  
 }
