@@ -88,6 +88,6 @@ export class Dev {
 
   private getLinkCommand(): string {
     const yarnLock = path.join(cwd, 'yarn.lock')
-    return fs.existsSync(yarnLock) ? '(yarn unlink; yarn link)' : 'npm unlink && npm link'
+    return fs.existsSync(yarnLock) ? '(yarn unlink; yarn link)' : 'npm link'
   }
 }

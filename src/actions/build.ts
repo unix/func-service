@@ -57,7 +57,7 @@ export class Build {
     try {
       execSync('ncc version')
     } catch (e) {
-      const fix = print.cyanColor('npm i @zeit/ncc -D')
+      const fix = print.cyanColor('npm i @vercel/ncc -D')
       throw new Error(`About. Missing package "ncc". \n  Run "${fix}" to fix.`)
     }
     spiner.succeed()
@@ -65,9 +65,7 @@ export class Build {
 
   async compile(): Promise<void> {
     spiner.start('bundling...')
-    const command = `cd ${cwd} && ${this.getNCCPath()} -m build ${this.entry} -o ${
-      this.output
-    }`
+    const command = `cd ${cwd} && ncc -m build ${this.entry} -o ${this.output}`
     exec(command, (err, stdout) => {
       if (err) throw err
       spiner.succeed()
