@@ -22,6 +22,11 @@ const cwd = process.cwd()
     alias: 'o',
     type: String,
   },
+  {
+    name: 'external',
+    alias: 'e',
+    type: [String],
+  },
 ])
 export class Build {
   private pkgPath: string = path.join(cwd, 'package.json')
@@ -65,7 +70,11 @@ export class Build {
 
   async compile(): Promise<void> {
     spiner.start('bundling...')
-    const command = `cd ${cwd} && ncc -m build ${this.entry} -o ${this.output}`
+    const externalOptions: string[] = this.args.option.external || []
+    const externalCommand = externalOptions.reduce((prev, external) => {
+      return `${prev} -e ${external}`
+    }, '')
+    const command = `cd ${cwd} && ncc -m build ${this.entry} -o ${this.output} ${externalCommand}`
     exec(command, (err, stdout) => {
       if (err) throw err
       spiner.succeed()
