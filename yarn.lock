@@ -149,10 +149,10 @@
     "@typescript-eslint/types" "4.15.2"
     eslint-visitor-keys "^2.0.0"
 
-"@vercel/ncc@^0.27.0":
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.27.0.tgz#c0cfeebb0bebb56052719efa4a0ecc090a932c76"
-  integrity sha512-DllIJQapnU2YwewIhh/4dYesmMQw3h2cFtabECc/zSJHqUbNa0eJuEkRa6DXbZvh1YPWBtYQoPV17NlDpBw1Vw==
+"@vercel/ncc@^0.33.1":
+  version "0.33.1"
+  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.33.1.tgz#b240080a3c1ded9446a30955a06a79851bb38f71"
+  integrity sha512-Mlsps/P0PLZwsCFtSol23FGqT3FhBGb4B1AuGQ52JTAtXhak+b0Fh/4T55r0/SVQPeRiX9pNItOEHwakGPmZYA==
 
 acorn-jsx@^5.3.1:
   version "5.3.1"
@@ -226,10 +226,15 @@ ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-arg@^4.1.0, arg@^4.1.3:
+arg@^4.1.0:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
   integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+
+arg@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.1.tgz#eb0c9a8f77786cad2af8ff2b862899842d7b6adb"
+  integrity sha512-e0hDa9H2Z9AwFkk2qDlwhoMYE4eToKarchkQHovNdLTCYMHZHeRjI71crOh+dio4K6u1IcwubQqo79Ga4CyAQA==
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -634,12 +639,12 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-func@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/func/-/func-1.3.1.tgz#f2b7ca7f07d0e11ab0c58465946e2588ad48e98e"
-  integrity sha512-JN1xD/xGolBkH8OQ+2gKc5cti6rmnQPmaE+nXpNdfAbQfFHfUaWqBUdy9Du/QrlYsG/4iltWyRGgpFPBnYURlQ==
+func@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/func/-/func-1.3.5.tgz#3ce446f5229263dab2adf744fab8531625880c21"
+  integrity sha512-slkk8qzb7ZgKUfiEuyBNEAQW+A/zuejgkyBJjrM8WZdGmuLHt8aYxW+2Z6wvXtVI9i+03PL/hPUWlfyqG6tq3g==
   dependencies:
-    arg "^4.1.3"
+    arg "^5.0.1"
     reflect-metadata "^0.1.13"
 
 functional-red-black-tree@^1.0.1:
